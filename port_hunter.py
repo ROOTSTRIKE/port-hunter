@@ -44,10 +44,22 @@ def load_targets(file_path):
         return [line.strip() for line in f if line.strip()]
 
 def parse_ports(port_str):
-    if "-" in port_str:
-        start, end = map(int, port_str.split("-"))
-        return list(range(start, end + 1))
-    return list(map(int, port_str.split(",")))
+    ports = set()
+    for part in port_str.split(','):
+        part = part.strip()
+        if '-' in part:
+            try:
+                start, end = map(int, part.split('-'))
+                ports.update(range(start, end + 1))
+            except ValueError:
+                print(f"Invalid port range: {part}")
+        else:
+            try:
+                ports.add(int(part))
+            except ValueError:
+                print(f"Invalid port: {part}")
+    return sorted(list(ports))
+
 
 async def main():
     parser = argparse.ArgumentParser(description="Port Hunter - Async TCP Port Scanner by RootStrike")
