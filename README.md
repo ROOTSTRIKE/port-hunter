@@ -28,3 +28,11 @@ python3 port_hunter.py -iL targets.txt -p 22,80,443 -t 0.5 -s 0.2
 | `-p`   | Ports to scan             |
 | `-t`   | Timeout (in seconds)      |
 | `-s`   | Sleep between scans       |
+
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/ROOTSTRIKE/port-hunter.git
+cd port-hunter
+pip install -r requirements.txt
