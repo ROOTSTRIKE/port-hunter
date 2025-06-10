@@ -63,6 +63,7 @@ def parse_ports(port_str):
 
 async def main():
     parser = argparse.ArgumentParser(description="Port Hunter - Async TCP Port Scanner by RootStrike")
+    parser.add_argument('-d', type=float, default=0.5, help='Delay between scans in seconds')
     parser.add_argument("-iL", help="Input file with target IPs/domains", required=True)
     parser.add_argument("-p", help="Ports (e.g., 22,80,443 or 1-1000)", required=True)
     parser.add_argument("-t", type=float, help="Timeout per port in seconds", default=1.0)
